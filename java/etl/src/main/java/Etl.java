@@ -8,10 +8,8 @@ public class Etl {
         Map <String, Integer> neW = new HashMap<>();
             for(Map.Entry<Integer, List<String>> entry : old.entrySet()){
                 Iterator<String> myIterator = entry.getValue().iterator();
-                while(myIterator.hasNext()){
-                        int i = (int)myIterator.next().charAt(0);
-                        i += 32;
-                        neW.putIfAbsent(Character.toString((char)i), entry.getKey());
+                for(String str : entry.getValue()){
+                    neW.put(str.toLowerCase(), entry.getKey());
                 }
             }
         return neW;
